@@ -20,7 +20,7 @@ coilCompose = "2.5.0"
 hiltCompiler = "2.48"
 hiltNavigationCompose = "1.1.0"
 
-kotlinxCoroutines = "1.7.3"
+kotlinxCoroutines = "1.8.0"
 javax = "1"
 mockkAndroid = "1.13.9"
 mockkAgent = "1.13.9"
