@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+
+    <string name="discover_products">Discover products</string>
+    <string name="image">image</string>
+    <string name="buy_now">Pay</string>
+
+</resources>
