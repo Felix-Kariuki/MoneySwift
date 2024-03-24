@@ -56,6 +56,9 @@ https://github.com/Felix-Kariuki/MoneySwift/assets/61313608/78b28da9-5cc1-461a-9
 Sample screenshots the test cases written . To find the test cases, explore the :app module testing packages
  <img src="./screenshots/test_one.png"> 
  <img src="./screenshots/test_two.png"> 
+ <img src="./screenshots/test_three.png"> 
+ <img src="./screenshots/test_four.png">
+ <img src="./screenshots/test_five.png"> 
 
 
 ## **Tech stack & Libraries 🛠️👨‍💻**
