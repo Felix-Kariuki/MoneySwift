@@ -1,8 +1,6 @@
 plugins {
     id("java-library")
     id("kotlin")
-
-
 }
 
 java {
@@ -18,5 +16,4 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.javax)
     implementation("org.json:json:20240303")
-
 }

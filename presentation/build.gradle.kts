@@ -21,7 +21,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -42,7 +42,6 @@ android {
 
 dependencies {
 
-
     implementation(project(":designSystem"))
     implementation(project(":domain"))
     implementation(project(":shared"))
@@ -59,13 +58,11 @@ dependencies {
     // stripe
     implementation(libs.stripe.android)
 
-
     // timber for Logging
     implementation(libs.timber)
 
     // coil
     implementation(libs.coil.compose)
-
 
     // Dagger Hilt
     api(libs.hilt.android)
