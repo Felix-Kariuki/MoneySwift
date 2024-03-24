@@ -19,6 +19,7 @@ class EcommerceViewmodelTest : BaseViewModelTest() {
 
     private val getListingByIdRepo = GetListingByIdTestRepository()
     private val getListingsRepo = GetListingsTestRepository()
+    private val stripeRepo = StripeTestRepository()
     private lateinit var viewModel: EcommerceViewModel
 
     @Before
@@ -26,6 +27,7 @@ class EcommerceViewmodelTest : BaseViewModelTest() {
         viewModel = EcommerceViewModel(
             getListingsRepository = getListingsRepo,
             getListingByIdRepository = getListingByIdRepo,
+            stripePaymentRepository = stripeRepo,
         )
     }
 
