@@ -213,7 +213,7 @@ fun ListingDetailsScreen(
                 )
 
                 EcommerceResultText(
-                    text = "reviews",
+                    text = "${state.singleListing?.rating?.count ?: 0} reviews",
                     textPadding = spacing().small,
                     textColor = Color.White,
                     style = MaterialTheme.typography.bodyLarge,
