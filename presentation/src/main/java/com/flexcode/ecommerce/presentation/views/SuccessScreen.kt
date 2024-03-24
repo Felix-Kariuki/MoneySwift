@@ -22,6 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -74,6 +75,7 @@ fun SuccessScreen(
             IconButton(
                 onClick = toBack,
                 colors = IconButtonDefaults.iconButtonColors(containerColor = secondaryColor),
+                modifier = modifier.testTag("success_back_btn")
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
@@ -91,7 +93,7 @@ fun SuccessScreen(
             Image(
                 painter = painterResource(id = R.drawable.icon_success),
                 contentDescription = null,
-                modifier = modifier.size(200.dp),
+                modifier = modifier.size(200.dp).testTag("success_icon"),
             )
 
             Spacer(modifier = modifier.height(spacing().large))
@@ -100,6 +102,7 @@ fun SuccessScreen(
                 text = "Payment has been made successfully",
                 textColor = Color.White,
                 fontSize = 18.sp,
+                modifier = modifier.testTag("success_text")
             )
         }
     }

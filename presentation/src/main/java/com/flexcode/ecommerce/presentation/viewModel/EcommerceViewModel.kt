@@ -79,24 +79,24 @@ class EcommerceViewModel @Inject constructor(
      * @param amount
      * @param currency
      */
-    private fun initStripeBilling(amount: String, currency: String) {
+     fun initStripeBilling(amount: String, currency: String) {
         viewModelScope.launch {
             stripePaymentRepository.createStripePayment(amount = amount, currency = currency)
                 .collectLatest { response ->
                     _state.update {
                         when (response) {
-                            is com.flexcode.ecommerce.domain.utils.ResultWrapper.Success -> {
+                            is ResultWrapper.Success -> {
                                 it.copy(
                                     isLoading = false,
                                     stripeResponse = response.data,
                                 )
                             }
 
-                            is com.flexcode.ecommerce.domain.utils.ResultWrapper.Loading -> {
+                            is ResultWrapper.Loading -> {
                                 it.copy(isLoading = true)
                             }
 
-                            is com.flexcode.ecommerce.domain.utils.ResultWrapper.Error -> {
+                            is ResultWrapper.Error -> {
                                 it.copy(
                                     isLoading = false,
                                     errorMsg = "Ann error ${response.errorMessage}",

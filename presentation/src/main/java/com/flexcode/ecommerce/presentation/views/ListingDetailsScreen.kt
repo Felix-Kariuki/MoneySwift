@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,11 +69,22 @@ fun ListingDetailsScreenRoute(
 ) {
     val state by viewModel.state.collectAsState()
 
+
+    val context = LocalContext.current.applicationContext
+    LaunchedEffect(state.stripeResponse) {
+        state.stripeResponse?.let {
+            PaymentConfiguration.init(
+                context,
+                Constants.PUBLISH_KEY,
+            )
+            paymentFlow(paymentSheet, it)
+        }
+    }
+
     ListingDetailsScreen(
         state = state,
         onEvent = viewModel::onEvent,
         id = id,
-        paymentSheet = paymentSheet,
         navigateBack = navigateBack,
         toSuccessScreen = toSuccessScreen,
     )
@@ -85,23 +97,15 @@ fun ListingDetailsScreen(
     navigateBack: () -> Unit,
     toSuccessScreen: () -> Unit,
     id: Int,
-    paymentSheet: PaymentSheet,
     state: UiState,
 ) {
+    val context = LocalContext.current.applicationContext
+
+
     LaunchedEffect(key1 = true) {
         onEvent(HomeEvent.GetListingById(id))
     }
 
-    val context = LocalContext.current.applicationContext
-    LaunchedEffect(state.stripeResponse) {
-        state.stripeResponse?.let {
-            PaymentConfiguration.init(
-                context,
-                com.flexcode.ecommerce.domain.utils.Constants.PUBLISH_KEY,
-            )
-            paymentFlow(paymentSheet, it)
-        }
-    }
 
     LaunchedEffect(key1 = state.stripeSuccessPayment) {
         state.stripeSuccessPayment?.let {
@@ -145,6 +149,7 @@ fun ListingDetailsScreen(
                         onEvent(HomeEvent.ResetState)
                     },
                     colors = IconButtonDefaults.iconButtonColors(containerColor = primaryColor),
+                    modifier = modifier.testTag("back_button_checkout")
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
@@ -253,7 +258,7 @@ fun ListingDetailsScreen(
 
                 EcommerceButton(
                     text = R.string.buy_now,
-                    modifier = modifier.width(180.dp),
+                    modifier = modifier.width(180.dp).testTag("pay_button"),
                     clickable = !state.isLoading,
                     strokeColor = if (state.isLoading) primaryColor else buttonColor,
                     textColor = if (state.isLoading) DisabledColor else Color.White,
