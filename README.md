@@ -28,7 +28,6 @@ The app displays a list of 5 products from a local listings.json generated from 
 
  const val PUBLISH_KEY = "PUBLISH_KEY_HERE
 
- const val AUTHORIZATION = "Bearer $SECRET_KEY"
 
  const val BASE_URL = "STRIPE_BASE_URL_HERE"
 
