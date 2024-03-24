@@ -1,7 +1,5 @@
 package com.flexcode.ecommerce
 
-import com.flexcode.ecommerce.presentation.sampleItem
-import com.flexcode.ecommerce.presentation.viewModel.EcommerceViewModel
 import com.flexcode.ecommerce.utils.BaseViewModelTest
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,7 +8,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
-import org.junit.Assert.assertNull
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -20,11 +18,11 @@ class EcommerceViewmodelTest : BaseViewModelTest() {
     private val getListingByIdRepo = GetListingByIdTestRepository()
     private val getListingsRepo = GetListingsTestRepository()
     private val stripeRepo = StripeTestRepository()
-    private lateinit var viewModel: EcommerceViewModel
+    private lateinit var viewModel: com.flexcode.ecommerce.presentation.viewModel.EcommerceViewModel
 
     @Before
     fun setup() {
-        viewModel = EcommerceViewModel(
+        viewModel = com.flexcode.ecommerce.presentation.viewModel.EcommerceViewModel(
             getListingsRepository = getListingsRepo,
             getListingByIdRepository = getListingByIdRepo,
             stripePaymentRepository = stripeRepo,
@@ -41,7 +39,9 @@ class EcommerceViewmodelTest : BaseViewModelTest() {
         val uiState = viewModel.state.value
         Assert.assertFalse(uiState.isLoading)
         Assert.assertNull(uiState.errorMsg)
-        Truth.assertThat(uiState.singleListing).isEqualTo(sampleItem)
+        Truth.assertThat(uiState.singleListing).isEqualTo(
+            com.flexcode.ecommerce.presentation.components.sampleItem,
+        )
         collectJob.cancel()
     }
 

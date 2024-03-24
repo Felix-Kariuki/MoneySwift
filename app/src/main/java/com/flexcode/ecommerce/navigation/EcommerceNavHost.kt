@@ -22,7 +22,7 @@ fun EcommerceNavHost(
 
     ) {
         composable(Routes.LISTINGS_SCREEN) {
-            ListingsScreenRoute {
+            com.flexcode.ecommerce.presentation.views.ListingsScreenRoute {
                 navController.navigate(
                     Routes.LISTINGS_DETAILS_SCREEN.replace(
                         oldValue = "{id}",
@@ -34,20 +34,27 @@ fun EcommerceNavHost(
 
         composable(Routes.LISTINGS_DETAILS_SCREEN) {
             val id = it.arguments?.getString("id")?.toInt() ?: 0
-            ListingDetailsScreenRoute(id = id, paymentSheet = paymentSheet, navigateBack = {
-                navController.navigateUp()
-            }, toSuccessScreen = {
+            com.flexcode.ecommerce.presentation.views.ListingDetailsScreenRoute(
+                id = id,
+                paymentSheet = paymentSheet,
+                navigateBack = {
+                    navController.navigateUp()
+                },
+                toSuccessScreen = {
                     navController.navigate(Routes.SUCCESS_SCREEN)
-                },)
+                },
+            )
         }
 
         composable(Routes.SUCCESS_SCREEN) {
-            SuccessScreenRoute(toBack = {
-                navController.navigate(Routes.LISTINGS_SCREEN) {
-                    popUpTo(Routes.LISTINGS_DETAILS_SCREEN) { inclusive = true }
-                    popUpTo(Routes.SUCCESS_SCREEN) { inclusive = true }
-                }
-            },)
+            com.flexcode.ecommerce.presentation.views.SuccessScreenRoute(
+                toBack = {
+                    navController.navigate(Routes.LISTINGS_SCREEN) {
+                        popUpTo(Routes.LISTINGS_DETAILS_SCREEN) { inclusive = true }
+                        popUpTo(Routes.SUCCESS_SCREEN) { inclusive = true }
+                    }
+                },
+            )
         }
     }
 }

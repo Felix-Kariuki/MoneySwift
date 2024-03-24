@@ -28,4 +28,8 @@ class StripeTestRepository : StripePaymentRepository {
 }
 
 val sampleStripe =
-    StripeResponse(key = "adadasdad", clientSecret = "retretretr", customerId = "rewrw")
+    StripeResponse(
+        key = "adadasdad",
+        clientSecret = "retretretr",
+        customerId = "rewrw",
+    )

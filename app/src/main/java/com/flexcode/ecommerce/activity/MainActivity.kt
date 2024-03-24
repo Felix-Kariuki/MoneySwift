@@ -26,7 +26,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewmodel: EcommerceViewModel by viewModels()
+    private val viewmodel: EcommerceViewModel by viewModels()
     private lateinit var navController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {

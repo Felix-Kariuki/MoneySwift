@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ecommerce"
 include(":app")
+include(":designSystem")
+include(":domain")
+include(":data")
+include(":shared")
+include(":presentation")

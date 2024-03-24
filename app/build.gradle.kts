@@ -58,6 +58,12 @@ tasks.named("preBuild") {
 
 dependencies {
 
+    implementation(project(":designSystem"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":shared"))
+    implementation(project(":presentation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -67,9 +73,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    // coil
-    implementation(libs.coil.compose)
-
     // timber for Logging
     implementation(libs.timber)
 
@@ -78,16 +81,8 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    // Gson
-    implementation(libs.gson)
-
     // stripe
     implementation(libs.stripe.android)
-
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.serialization)
-    implementation(libs.ktor.client.logging)
 
     // testing
     // domain

@@ -4,7 +4,7 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.flexcode.ecommerce.presentation.sampleItem
+import com.flexcode.ecommerce.presentation.components.sampleItem
 import com.flexcode.ecommerce.presentation.state.UiState
 import com.flexcode.ecommerce.presentation.views.ListingScreen
 import org.junit.Rule
@@ -24,7 +24,6 @@ class ListingsScreenTest {
                         sampleItem,
                     ),
                 ),
-                onEvent = {},
                 toDetails = {},
             )
         }
@@ -39,7 +38,7 @@ class ListingsScreenTest {
                     listings = listOf(),
                     isLoading = true,
                 ),
-                onEvent = {},
+
                 toDetails = {},
             )
         }
@@ -54,7 +53,7 @@ class ListingsScreenTest {
                     listings = listOf(),
                     isLoading = false,
                 ),
-                onEvent = {},
+
                 toDetails = {},
             )
         }
@@ -69,7 +68,7 @@ class ListingsScreenTest {
                     listings = listOf(sampleItem),
                     isLoading = false,
                 ),
-                onEvent = {},
+
                 toDetails = {},
             )
         }

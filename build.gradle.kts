@@ -5,8 +5,10 @@ plugins {
     alias(libs.plugins.daggerHilt) apply false
     alias(libs.plugins.kspPlugin) apply false
     alias(libs.plugins.ktlintPlugin)
+    alias(libs.plugins.androidLibrary) apply false
 }
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
 }
