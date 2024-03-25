@@ -15,6 +15,7 @@ import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
+const val error = "Error :"
 @Singleton
 class StripePaymentRepositoryImpl @Inject constructor(
     private val ktorService: EcommerceKtorService,
@@ -38,7 +39,7 @@ class StripePaymentRepositoryImpl @Inject constructor(
                 val client = withContext(Dispatchers.Default) {
                     getClient(customer[0], amount, currency)
                 }
-                if (!key.contains("Error:") && !client.contains("Error:")) {
+                if (!key.contains(error) && !client.contains(error)) {
                     val result =
                         StripeResponse(
                             key = key,

@@ -109,7 +109,7 @@ fun FullWidthImageItem(
                 ),
             )
             .fillMaxWidth()
-            // .background(shimmerEffect())
+            .background(shimmerEffect())
             .height(height),
     )
 }

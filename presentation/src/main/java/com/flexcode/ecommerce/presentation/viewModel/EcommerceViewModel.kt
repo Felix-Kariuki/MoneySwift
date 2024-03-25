@@ -99,7 +99,7 @@ class EcommerceViewModel @Inject constructor(
                             is ResultWrapper.Error -> {
                                 it.copy(
                                     isLoading = false,
-                                    errorMsg = "Ann error ${response.errorMessage}",
+                                    errorMsg = "An error ${response.errorMessage}",
                                 )
                             }
                         }
