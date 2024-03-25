@@ -20,15 +20,13 @@ The app displays a list of 5 products from a local listings.json generated from 
 
 1. Android studio - Iguana +
 2. test device an android device either simulator or physical device
-3. Stripe test creds -  I have provide the test creds i used to test build the project. The cres can be found in the `domain` module under the `utils` package in the `Constants` File
-   If you wish to replace the creds with your own then fonf the Constants file and replace with your own. 
+3. Stripe test creds -  I have provide the test creds i used to test build the project. The creds can be found in the `domain` module under the `utils` package in the `Constants` file. If you wish to replace the creds with your own then find the Constants file and replace with your own. 
 
 ```KOTLIN
  const val SECRET_KEY = "SECRET_KEY_HERE"
 
  const val PUBLISH_KEY = "PUBLISH_KEY_HERE
 
- const val AUTHORIZATION = "Bearer $SECRET_KEY"
 
  const val BASE_URL = "STRIPE_BASE_URL_HERE"
 
@@ -36,26 +34,39 @@ The app displays a list of 5 products from a local listings.json generated from 
 
   ### How to run
 
-[APK Link]() - To install directly the apk without running the project On the IDE find the attched apk
+[APK Link](https://we.tl/t-oQWV6kzJ7L) - To install directly the apk without running the project On the IDE find the attched apk
 
 #### Running on IDE
-Clone the project and open it with android studio. Once the necerssary libraries have been downloaded run the project an install to your testing device
+
+ - Go to the android studio and create a new project using the 'Get from version control' option.
+ - Paste this link https://github.com/Felix-Kariuki/MoneySwift
+ - Build the project and run it
+ - Get Ready Apk [here](https://we.tl/t-oQWV6kzJ7L)
 
 
 ## **Screenshots 📷**
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img src="./screenshots/listings_screen.png" width="300"> | <img src="./screenshots/checkout.png" width="300"> | <img src="./screenshots/stripe_screen.png" width="300"> |
+|<img src="./screenshots/listings_screen.png" width="300"> | <img src="./screenshots/checkout.png" width="300"> | <img src="./screenshots/checkout_one.png" width="300"> |
 |<img src="./screenshots/success_screen.png" width="300">  | 
 
 ## Demo
 
-https://github.com/Felix-Kariuki/MoneySwift/assets/61313608/78b28da9-5cc1-461a-9cab-3a000009f305
+<!--https://github.com/Felix-Kariuki/MoneySwift/assets/61313608/78b28da9-5cc1-461a-9cab-3a000009f305-->
+
+https://github.com/Felix-Kariuki/MoneySwift/assets/61313608/336f3b68-d13d-4b07-8f4f-6c57caed83da
+
+
+
+
 
 ## Testing 
 Sample screenshots the test cases written . To find the test cases, explore the :app module testing packages
  <img src="./screenshots/test_one.png"> 
  <img src="./screenshots/test_two.png"> 
+ <img src="./screenshots/test_three.png"> 
+ <img src="./screenshots/test_four.png">
+ <img src="./screenshots/test_five.png"> 
 
 
 ## **Tech stack & Libraries 🛠️👨‍💻**
@@ -70,7 +81,8 @@ Sample screenshots the test cases written . To find the test cases, explore the 
 
 
 * [Dagger-Hilt](https://dagger.dev/hilt/)- a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project
-
+- [Kotlinx-serilization](https://github.com/Kotlin/kotlinx.serialization) - Kotlin multiplatform / multi-format serialization.
+- [ktor](https://ktor.io/docs/welcome.html) - Ktor is a framework to easily build connected applications – web applications, HTTP services, mobile and browser applications.
 * [Coroutines](https://developer.android.com/kotlin/coroutines) - a concurrency design pattern that you can use on Android to simplify code that executes asynchronously
 * [Flow](https://developer.android.com/kotlin/flow)- In coroutines, a flow is a type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
 
@@ -84,8 +96,19 @@ Sample screenshots the test cases written . To find the test cases, explore the 
 
 ## Modularization and project struecture
 The project is modularized by layer as a way of showcasing the power of project modularization and separation of concerns.The modules are:
-- presentation - 
-- data - 
-- domain - 
-- shared - 
-- designSystem - 
+### - presentation 
+  The role of the UI layer (or presentation layer) is to display the application data on the screen. Whenever the data changes, either due to user interaction (such as pressing a button) or external input (such as a network response), the UI should update to reflect the changes.
+The UI layer is made up of two things:
+## - data  
+The data layer of the app contains the business logic. The business logic is what gives value to your app—it's made of rules that determine how your app creates, stores, and changes data.The data layer is made of repositories that each can contain zero to many data sources
+
+### - domain 
+The domain layer is an optional layer that sits between the UI and data layers.
+The domain layer is responsible for encapsulating complex business logic, or simple business logic that is reused by multiple ViewModels. This layer is optional because not all apps will have these requirements. You should use it only when needed—for example, to handle complexity or favor reusability
+
+### - shared  
+This layer contains code that is shared across values layers in the app and may need to be accesssed by several modules. It acts as a single source of truth for all sahred code, making it easy to debug and maintain the project
+
+### - designSystem 
+This layer acts as the Source of truth for the App UI and it contains a colection of reusable components, styles, and guidelines that define the look and feel of your entire application. It ensures consistency across your screens and provides a unified user experience.
+
