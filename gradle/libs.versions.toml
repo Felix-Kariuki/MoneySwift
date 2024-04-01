@@ -18,7 +18,7 @@ stripeAndroid = "20.12.0"
 timber = "5.0.1"
 coilCompose = "2.5.0"
 hiltCompiler = "2.48"
-hiltNavigationCompose = "1.1.0"
+hiltNavigationCompose = "1.2.0"
 
 kotlinxCoroutines = "1.7.3"
 javax = "1"
