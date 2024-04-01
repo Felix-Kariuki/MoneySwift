@@ -23,7 +23,7 @@ hiltNavigationCompose = "1.1.0"
 kotlinxCoroutines = "1.7.3"
 javax = "1"
 mockkAndroid = "1.13.9"
-mockkAgent = "1.13.9"
+mockkAgent = "1.13.10"
 mockk = "1.13.9"
 kotlinxCoroutinesTest = "1.7.3"
 
