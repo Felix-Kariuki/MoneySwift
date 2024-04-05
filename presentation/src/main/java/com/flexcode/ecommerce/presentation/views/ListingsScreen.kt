@@ -2,6 +2,7 @@ package com.flexcode.ecommerce.presentation.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -57,54 +58,66 @@ fun ListingScreen(
     state: UiState,
     toDetails: (Int) -> Unit,
 ) {
-    if (state.isLoading && state.listings.isEmpty()) {
-        // show loader
-        CircularProgressIndicator(
-            color = buttonColor,
-            modifier = modifier.testTag("ecommerce_progress_indicator"),
-        )
-    } else if (!state.isLoading && state.listings.isNotEmpty()) {
-        // show ui
 
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(start = spacing().medium, top = 40.dp, end = spacing().medium),
-        ) {
-            TopItem()
-
-            // list item
-
-            Spacer(modifier = modifier.height(spacing().large))
-            ItemCountItem(state = state)
-
-            Spacer(modifier = modifier.height(spacing().medium))
-
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(spacing().medium),
-                verticalArrangement = Arrangement.spacedBy(spacing().medium),
-                modifier = modifier.testTag("listings_v_grid"),
+    Box(
+        contentAlignment = Alignment.Center
+    ){
+        if (state.isLoading && state.listings.isEmpty()) {
+            // show loader
+            Column(
+                modifier = modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                items(state.listings.size) { i ->
-                    ListingItem(item = state.listings[i], onClick = {
-                        toDetails(it)
-                    },)
-                }
+                CircularProgressIndicator(
+                    color = buttonColor,
+                    modifier = modifier.testTag("ecommerce_progress_indicator"),
+                )
+            }
 
-                item {
-                    Spacer(modifier = modifier.height(spacing().large))
+        } else if (!state.isLoading && state.listings.isNotEmpty()) {
+            // show ui
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.primary)
+                    .padding(start = spacing().medium, top = 40.dp, end = spacing().medium),
+            ) {
+                TopItem()
+
+                // list item
+
+                Spacer(modifier = modifier.height(spacing().large))
+                ItemCountItem(state = state)
+
+                Spacer(modifier = modifier.height(spacing().medium))
+
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    horizontalArrangement = Arrangement.spacedBy(spacing().medium),
+                    verticalArrangement = Arrangement.spacedBy(spacing().medium),
+                    modifier = modifier.testTag("listings_v_grid"),
+                ) {
+                    items(state.listings.size) { i ->
+                        ListingItem(item = state.listings[i], onClick = {
+                            toDetails(it)
+                        },)
+                    }
+
+                    item {
+                        Spacer(modifier = modifier.height(spacing().large))
+                    }
                 }
             }
+        } else if (!state.isLoading && state.errorMsg?.isNotEmpty() == true) {
+            // show error
+            ErrorItem(state = state)
+        } else if (!state.isLoading && state.listings.isEmpty()) {
+            // empty view
+            NoResultFound()
         }
-    } else if (!state.isLoading && state.errorMsg?.isNotEmpty() == true) {
-        // show error
-        ErrorItem(state = state)
-    } else if (!state.isLoading && state.listings.isEmpty()) {
-        // empty view
-        NoResultFound()
     }
+
 }
 
 @Composable
