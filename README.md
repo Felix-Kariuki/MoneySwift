@@ -97,7 +97,7 @@ Sample screenshots the test cases written . To find the test cases, explore the 
 ## Modularization and project struecture
 The project is modularized by layer as a way of showcasing the power of project modularization and separation of concerns.The modules are:
 ### - presentation 
-  The role of the UI layer (or presentation layer) is to display the application data on the screen. Whenever the data changes, either due to user interaction (such as pressing a button) or external input (such as a network response), the UI should update to reflect the changes.
+ The role of the UI layer (or presentation layer) is to display the application data on the screen. Whenever the data changes, either due to user interaction (such as pressing a button) or external input (such as a network response), the UI should update to reflect the changes.
 The UI layer is made up of two things:
 ## - data  
 The data layer of the app contains the business logic. The business logic is what gives value to your app—it's made of rules that determine how your app creates, stores, and changes data.The data layer is made of repositories that each can contain zero to many data sources
@@ -107,8 +107,8 @@ The domain layer is an optional layer that sits between the UI and data layers.
 The domain layer is responsible for encapsulating complex business logic, or simple business logic that is reused by multiple ViewModels. This layer is optional because not all apps will have these requirements. You should use it only when needed—for example, to handle complexity or favor reusability
 
 ### - shared  
-This layer contains code that is shared across values layers in the app and may need to be accesssed by several modules. It acts as a single source of truth for all sahred code, making it easy to debug and maintain the project
+This layer contains code that is shared across values layers in the app and may need to be accesssed by several modules. It acts as a single source of truth for all shared code, making it easy to debug and maintain the project
 
 ### - designSystem 
-This layer acts as the Source of truth for the App UI and it contains a colection of reusable components, styles, and guidelines that define the look and feel of your entire application. It ensures consistency across your screens and provides a unified user experience.
+This layer acts as the Source of truth for the App UI and it contains a collection of reusable components, styles, and guidelines that define the look and feel of your entire application. It ensures consistency across your screens and provides a unified user experience.
 
