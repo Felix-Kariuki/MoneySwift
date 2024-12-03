@@ -7,6 +7,9 @@ import com.flexcode.ecommerce.domain.utils.ClientParser
 import com.flexcode.ecommerce.domain.utils.CustomerParser
 import com.flexcode.ecommerce.domain.utils.KeyParser
 import com.flexcode.ecommerce.domain.utils.ResultWrapper
+import com.flexcode.ecommerce.shared.dispatchers.Dispatcher
+import com.flexcode.ecommerce.shared.dispatchers.DispatcherProvider
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,6 +25,7 @@ class StripePaymentRepositoryImpl @Inject constructor(
     private val customerParser: CustomerParser,
     private val keyParser: KeyParser,
     private val clientParser: ClientParser,
+    @Dispatcher(DispatcherProvider.IO) private val dispatcher: CoroutineDispatcher,
 ) : StripePaymentRepository {
 
     override suspend fun createStripePayment(
@@ -33,10 +37,10 @@ class StripePaymentRepositoryImpl @Inject constructor(
             try {
                 val response = ktorService.createStripePayment()
                 val customer = customerParser.parse(response)
-                val key = withContext(Dispatchers.Default) {
+                val key = withContext(dispatcher) {
                     getKey(customer[0])
                 }
-                val client = withContext(Dispatchers.Default) {
+                val client = withContext(dispatcher) {
                     getClient(customer[0], amount, currency)
                 }
                 if (!key.contains(error) && !client.contains(error)) {
