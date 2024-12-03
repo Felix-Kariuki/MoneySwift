@@ -10,8 +10,11 @@ import com.flexcode.ecommerce.domain.utils.ResultWrapper
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.last
+import kotlinx.coroutines.test.TestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Before
@@ -26,6 +29,9 @@ class StripeRepositoryTest {
     private val clientParser = mockk<ClientParser>()
     private lateinit var repository: StripePaymentRepository
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val dispatcher: TestDispatcher = UnconfinedTestDispatcher()
+
     @Before
     fun setup() {
         repository = StripePaymentRepositoryImpl(
@@ -33,6 +39,7 @@ class StripeRepositoryTest {
             customerParser = customerParser,
             keyParser = keyParser,
             clientParser = clientParser,
+            dispatcher = dispatcher,
         )
     }
 
