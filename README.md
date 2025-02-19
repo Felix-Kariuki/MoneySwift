@@ -22,7 +22,7 @@ integrates with `Stripe SDK` to complete checkout
 
 ## Prerequisites
 
-1. Android studio - Iguana +
+1. Android studio 
 2. test device an android device either simulator or physical device
 3. Stripe test creds -  I have provide the test creds i used to test build the project. The creds can be found in the `domain` module under the `utils` package in the `Constants` file. If you wish to replace the creds with your own then find the Constants file and replace with your own. 
 
