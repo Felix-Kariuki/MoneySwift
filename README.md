@@ -1,6 +1,7 @@
-# MoneySwift - I&M Mobile Code Test 
+# MoneySwift 
+<!-- I&M Mobile Code Test -->
 
-MoneySwift is a (fictitious) Fintech company that provides an e-commerce solution
+<!--MoneySwift is a (fictitious) Fintech company that provides an e-commerce solution
 
 You are tasked with creating a basic Android app that simulates a simple e-
 commerce platform. The app should display a list of products (at least 3-5 items)
@@ -8,7 +9,10 @@ commerce platform. The app should display a list of products (at least 3-5 items
 and allow the user to select products and proceed to a checkout screen where
 they can enter payment information via Stripe.
 
-The app displays a list of 5 products from a local listings.json generated from the fakestore API 
+The app displays a list of 5 products from a local listings.json generated from the fakestore API -->
+
+Money swift is an ecommerce android application that is built following best practices: Kotlin, coroutines, Clean Architecture, modularization, tests, MVI, And 
+integrates with `Stripe SDK` to complete checkout
 
 
 ## Features
